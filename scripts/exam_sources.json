@@ -95,6 +95,78 @@
     "rss_fallback_query": "https://news.google.com/rss/search?q=%22RBI+Assistant%22+prelims+exam+date+site:rbi.org.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
     "rolling": false
   },
+  "SIDBI_GRADE_A": {
+    "official_urls": [
+      {
+        "url": "https://www.sidbi.in/en/careers",
+        "type": "html",
+        "include_patterns": ["Grade 'A'", "Grade A", "Phase I", "Assistant Manager"],
+        "exclude_patterns": ["Phase II", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SIDBI+Grade+A%22+exam+date+site:sidbi.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "SEBI_GRADE_A": {
+    "official_urls": [
+      {
+        "url": "https://www.sebi.gov.in/sebiweb/other/career.jsp",
+        "type": "html",
+        "include_patterns": ["Grade A", "Phase I", "Officer Grade A"],
+        "exclude_patterns": ["Phase II", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SEBI+Grade+A%22+Phase+I+exam+date+site:sebi.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "NABARD_GRADE_A": {
+    "official_urls": [
+      {
+        "url": "https://www.nabard.org/careers-notices1.aspx",
+        "type": "html",
+        "include_patterns": ["Grade A", "Preliminary", "Phase I"],
+        "exclude_patterns": ["Mains", "Phase II", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22NABARD+Grade+A%22+prelims+exam+date+site:nabard.org+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "IFSCA_GRADE_A": {
+    "official_urls": [
+      {
+        "url": "https://ifsca.gov.in/Career",
+        "type": "html",
+        "include_patterns": ["Grade A", "Phase I", "Officer Grade A"],
+        "exclude_patterns": ["Phase II", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22IFSCA+Grade+A%22+Phase+I+exam+date+site:ifsca.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "IRDAI_AM": {
+    "official_urls": [
+      {
+        "url": "https://irdai.gov.in/careers",
+        "type": "html",
+        "include_patterns": ["Assistant Manager", "Phase I", "Grade A"],
+        "exclude_patterns": ["Phase II", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22IRDAI+Assistant+Manager%22+exam+date+site:irdai.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "LIC_AAO": {
+    "official_urls": [
+      {
+        "url": "https://licindia.in/web/guest/careers",
+        "type": "html",
+        "include_patterns": ["AAO", "Assistant Administrative Officer", "Preliminary"],
+        "exclude_patterns": ["Mains", "Interview", "Final Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22LIC+AAO%22+prelims+exam+date+site:licindia.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
   "REGULATORY_A_B": {
     "official_urls": [
       {

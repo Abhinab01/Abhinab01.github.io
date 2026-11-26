@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": 1,
-  "updated_at": "2026-11-01T00:00:00Z",
+  "revision": 2,
+  "updated_at": "2026-11-26T00:00:00Z",
   "exams": {
     "CAT": {
       "official_date": "2026-11-29",
@@ -65,6 +65,48 @@
       "label": "RBI Assistant Prelims 2027",
       "is_confirmed": false,
       "directive": "Maximize speed-accuracy on core percentages, ratios & averages."
+    },
+    "SIDBI_GRADE_A": {
+      "official_date": "2026-12-27",
+      "next_cycle_date": "2027-12-26",
+      "label": "SIDBI Grade A 2026",
+      "is_confirmed": true,
+      "directive": "15 Qs in 15 min: drill high-speed Arithmetic, DI, Quadratic & Number Series with zero blind guesses."
+    },
+    "SEBI_GRADE_A": {
+      "official_date": "2027-02-21",
+      "next_cycle_date": "2028-02-20",
+      "label": "SEBI Grade A Phase 1 2027",
+      "is_confirmed": false,
+      "directive": "20 Qs in 20 min: prioritize clean Arithmetic word problems, Ratios & Quadratic accuracy."
+    },
+    "NABARD_GRADE_A": {
+      "official_date": "2027-07-18",
+      "next_cycle_date": "2028-07-16",
+      "label": "NABARD Grade A Prelims 2027",
+      "is_confirmed": false,
+      "directive": "20 Qs in 20 min: build rapid Percentages, Profit & Loss, Averages & DI fluency."
+    },
+    "IFSCA_GRADE_A": {
+      "official_date": "2027-03-28",
+      "next_cycle_date": "2028-03-26",
+      "label": "IFSCA Grade A Phase 1 2027",
+      "is_confirmed": false,
+      "directive": "25 Qs in 25 min: balance fast Arithmetic ratios with Algebra & Number Series precision."
+    },
+    "IRDAI_AM": {
+      "official_date": "2027-04-25",
+      "next_cycle_date": "2028-04-23",
+      "label": "IRDAI Asst. Manager 2027",
+      "is_confirmed": false,
+      "directive": "40 Qs in 30 min: train sub-45s/Q speed across Arithmetic, DI & Equations."
+    },
+    "LIC_AAO": {
+      "official_date": "2027-02-07",
+      "next_cycle_date": "2028-02-06",
+      "label": "LIC AAO Prelims 2027",
+      "is_confirmed": false,
+      "directive": "35 Qs in 20 min with zero negative marking: maximize clean attempts on Arithmetic & Speed Math."
     },
     "SSC": {
       "official_date": "2027-06-13",
