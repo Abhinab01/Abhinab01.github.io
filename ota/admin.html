@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MOCKBIRD OTA Exam Schedule Admin</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #131926;
+      --surface-2: #1b2436;
+      --border: #273248;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-fg: #082f49;
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    body.light {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f1f5f9;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0284c7;
+      --accent-fg: #ffffff;
+      --ok: #059669;
+      --warn: #d97706;
+      --danger: #dc2626;
+      --shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding: 16px;
+    }
+    .container { max-width: 1120px; margin: 0 auto; }
+    header {
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 12px; margin-bottom: 16px;
+    }
+    h1 { margin: 0; font-size: 1.35rem; letter-spacing: -0.02em; }
+    .subtitle { font-size: 0.85rem; color: var(--muted); }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+    .grid-auth {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      align-items: end;
+    }
+    label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 4px; }
+    input[type="text"], input[type="password"], input[type="date"], textarea {
+      width: 100%;
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-primary { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
+    .btn-ok { background: var(--ok); color: #fff; border-color: transparent; }
+    .btn-danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .spacer { flex: 1; }
+    .status-strip {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 9px; border-radius: 999px; font-size: 0.74rem; font-weight: 700;
+      background: var(--surface-2); border: 1px solid var(--border);
+    }
+    .pill-ok { color: var(--ok); border-color: var(--ok); }
+    .pill-warn { color: var(--warn); border-color: var(--warn); }
+    .pill-accent { color: var(--accent); border-color: var(--accent); }
+    .pill-danger { color: var(--danger); border-color: var(--danger); }
+    .banner {
+      padding: 10px 14px; border-radius: 10px; margin-bottom: 14px;
+      font-size: 0.86rem; border: 1px solid var(--border);
+      display: none;
+    }
+    .banner.show { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+    .banner.error { background: rgba(239, 68, 68, 0.12); border-color: var(--danger); color: var(--text); }
+    .banner.success { background: rgba(16, 185, 129, 0.12); border-color: var(--ok); color: var(--text); }
+    .banner.info { background: rgba(56, 189, 248, 0.10); border-color: var(--accent); color: var(--text); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
+    .exam-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .exam-key {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.85rem; font-weight: 800;
+      padding: 3px 8px; border-radius: 6px;
+      background: var(--surface-2); border: 1px solid var(--border);
+    }
+    .dates-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .toggle-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 600; color: var(--text); text-transform: none; margin: 0; cursor: pointer;
+    }
+    pre {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      overflow-x: auto;
+      font-size: 0.78rem;
+      max-height: 360px;
+      margin: 10px 0 0;
+    }
+    .add-panel { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+    .add-panel.show { display: block; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>MOCKBIRD OTA Exam Schedule Console</h1>
+        <div class="subtitle">Zero-cost GitHub Pages endpoint &bull; <code>abhinab01.github.io/ota/exam_schedule.json</code></div>
+      </div>
+      <div class="row">
+        <span id="modeBadge" class="pill pill-warn">Read-Only Preview</span>
+        <button id="themeBtn" class="btn" type="button">Light / Dark</button>
+      </div>
+    </header>
+
+    <div id="alertBanner" class="banner"></div>
+
+    <!-- GitHub Auth & Target Panel -->
+    <section class="panel">
+      <div class="grid-auth">
+        <div>
+          <label for="ghOwner">Owner</label>
+          <input id="ghOwner" type="text" value="abhinab01" />
+        </div>
+        <div>
+          <label for="ghRepo">Repo</label>
+          <input id="ghRepo" type="text" value="abhinab01.github.io" />
+        </div>
+        <div>
+          <label for="ghBranch">Branch</label>
+          <input id="ghBranch" type="text" value="main" />
+        </div>
+        <div>
+          <label for="ghPath">File Path</label>
+          <input id="ghPath" type="text" value="ota/exam_schedule.json" />
+        </div>
+        <div style="grid-column: span 2;">
+          <label for="ghToken">GitHub Fine-Grained PAT (Contents: Read &amp; Write)</label>
+          <input id="ghToken" type="password" placeholder="github_pat_..." autocomplete="off" />
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <label class="toggle-label">
+          <input id="rememberToken" type="checkbox" />
+          Remember token on this browser
+        </label>
+        <div class="spacer"></div>
+        <button id="connectBtn" class="btn btn-primary" type="button">Connect &amp; Load Latest</button>
+        <button id="wipeTokenBtn" class="btn btn-danger" type="button">Lock / Wipe Token</button>
+      </div>
+    </section>
+
+    <!-- Status & Action Bar -->
+    <section class="panel">
+      <div class="status-strip">
+        <div class="row">
+          <span class="pill pill-accent">Rev: <strong id="revLabel">—</strong></span>
+          <span class="pill">Updated: <strong id="updatedLabel">—</strong></span>
+          <span class="pill">Exams: <strong id="countLabel">0</strong></span>
+          <span class="pill pill-ok">Confirmed: <strong id="confirmedLabel">0</strong></span>
+        </div>
+        <div class="row">
+          <input id="searchBox" type="text" placeholder="Filter exam key or label..." style="width: 210px;" />
+          <button id="toggleAddBtn" class="btn" type="button">+ Add Exam</button>
+          <button id="toggleJsonBtn" class="btn" type="button">JSON Preview</button>
+          <button id="downloadBtn" class="btn" type="button">Download JSON</button>
+          <button id="publishBtn" class="btn btn-ok" type="button" disabled>Publish OTA Update</button>
+        </div>
+      </div>
+
+      <!-- Inline Add Exam Form -->
+      <div id="addPanel" class="add-panel">
+        <div class="grid-auth">
+          <div>
+            <label for="newKey">Exam Key (UPPERCASE)</label>
+            <input id="newKey" type="text" placeholder="e.g. XAT" />
+          </div>
+          <div>
+            <label for="newLabel">Label</label>
+            <input id="newLabel" type="text" placeholder="XAT 2027" />
+          </div>
+          <div>
+            <label for="newOfficialDate">Official Date</label>
+            <input id="newOfficialDate" type="date" />
+          </div>
+          <div>
+            <label for="newNextDate">Next Cycle Date (Opt)</label>
+            <input id="newNextDate" type="date" />
+          </div>
+          <div style="grid-column: span 2;">
+            <label for="newDirective">Study Directive</label>
+            <input id="newDirective" type="text" placeholder="Focus on Decision Making & Quant..." />
+          </div>
+        </div>
+        <div class="row" style="margin-top: 8px;">
+          <label class="toggle-label"><input id="newConfirmed" type="checkbox" /> Confirmed Official Date</label>
+          <div class="spacer"></div>
+          <button id="addConfirmBtn" class="btn btn-primary" type="button">Add to Schedule</button>
+        </div>
+      </div>
+
+      <!-- JSON Preview Drawer -->
+      <div id="jsonDrawer" style="display: none;">
+        <pre id="jsonPreview"></pre>
+      </div>
+    </section>
+
+    <!-- Exam Cards -->
+    <section id="cardsGrid" class="cards"></section>
+  </div>
+
+  <script>
+    (() => {
+      const STORAGE_TOKEN_KEY = 'mockbird_ota_gh_pat';
+      const STORAGE_THEME_KEY = 'mockbird_ota_theme';
+      const LIVE_CDN_URL = 'https://abhinab01.github.io/ota/exam_schedule.json';
+
+      const state = {
+        schedule: { schema_version: 1, revision: 1, updated_at: new Date().toISOString(), exams: {} },
+        sha: null,
+        authenticated: false,
+        search: '',
+        customAddedKeys: new Set(),
+      };
+
+      const el = (id) => document.getElementById(id);
+
+      // Theme setup
+      const savedTheme = localStorage.getItem(STORAGE_THEME_KEY);
+      if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.body.classList.add('light');
+      }
+      el('themeBtn').addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        localStorage.setItem(STORAGE_THEME_KEY, document.body.classList.contains('light') ? 'light' : 'dark');
+      });
+
+      // UTF-8 safe Base64 helpers
+      function utf8ToBase64(str) {
+        const bytes = new TextEncoder().encode(str);
+        let binary = '';
+        const chunkSize = 0x8000;
+        for (let i = 0; i < bytes.length; i += chunkSize) {
+          binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+        }
+        return btoa(binary);
+      }
+
+      function base64ToUtf8(b64) {
+        const clean = b64.replace(/\s/g, '');
+        const binary = atob(clean);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+      }
+
+      function showBanner(type, html) {
+        const b = el('alertBanner');
+        b.className = `banner show ${type}`;
+        b.innerHTML = html;
+      }
+
+      function hideBanner() {
+        const b = el('alertBanner');
+        b.className = 'banner';
+        b.innerHTML = '';
+      }
+
+      function computePacingBadge(officialDateStr, nextCycleDateStr) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(officialDateStr || '')) {
+          return { text: 'Invalid Date', cls: 'pill-danger' };
+        }
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const parseLocal = (s) => {
+          const [y, m, d] = s.split('-').map(Number);
+          return new Date(y, m - 1, d);
+        };
+        let target = parseLocal(officialDateStr);
+        let rolled = false;
+        if (target < today) {
+          if (nextCycleDateStr && /^\d{4}-\d{2}-\d{2}$/.test(nextCycleDateStr)) {
+            const nextT = parseLocal(nextCycleDateStr);
+            if (nextT >= today) target = nextT;
+          }
+          while (target < today) {
+            target = new Date(target.getFullYear() + 1, target.getMonth(), target.getDate());
+            rolled = true;
+          }
+        }
+        const days = Math.max(0, Math.round((target - today) / 86400000));
+        let phase = 'Foundation';
+        let cls = 'pill-accent';
+        if (days <= 7) { phase = 'Exam Week'; cls = 'pill-danger'; }
+        else if (days <= 30) { phase = 'Peak Sprint'; cls = 'pill-warn'; }
+        else if (days <= 90) { phase = 'Accelerate'; cls = 'pill-ok'; }
+        const prefix = rolled ? 'Auto-Rollover • ' : '';
+        return { text: `${prefix}${days}d • ${phase}`, cls };
+      }
+
+      function nextMonotonicRevision(currentRev) {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const d = String(now.getDate()).padStart(2, '0');
+        const todayRev = Number(`${y}${m}${d}01`);
+        return Math.max((Number(currentRev) || 0) + 1, todayRev);
+      }
+
+      function renderMeta() {
+        const exams = state.schedule.exams || {};
+        const keys = Object.keys(exams);
+        const confirmed = keys.filter((k) => exams[k].is_confirmed === true).length;
+        el('revLabel').textContent = state.schedule.revision ?? '—';
+        el('updatedLabel').textContent = (state.schedule.updated_at || '—').replace('T', ' ').replace('Z', ' UTC');
+        el('countLabel').textContent = String(keys.length);
+        el('confirmedLabel').textContent = String(confirmed);
+        el('modeBadge').textContent = state.authenticated ? 'Connected (Read & Write)' : 'Read-Only Preview';
+        el('modeBadge').className = `pill ${state.authenticated ? 'pill-ok' : 'pill-warn'}`;
+        el('publishBtn').disabled = !state.authenticated;
+
+        if (el('jsonDrawer').style.display !== 'none') {
+          el('jsonPreview').textContent = JSON.stringify(state.schedule, null, 2);
+        }
+      }
+
+      function renderCards() {
+        const grid = el('cardsGrid');
+        grid.innerHTML = '';
+        const q = state.search.trim().toLowerCase();
+        const exams = state.schedule.exams || {};
+        const keys = Object.keys(exams).filter((k) => {
+          if (!q) return true;
+          return k.toLowerCase().includes(q) || (exams[k].label || '').toLowerCase().includes(q);
+        });
+
+        for (const key of keys) {
+          const entry = exams[key];
+          const badge = computePacingBadge(entry.official_date, entry.next_cycle_date);
+          const card = document.createElement('div');
+          card.className = 'exam-card';
+
+          card.innerHTML = `
+            <div class="row">
+              <span class="exam-key">${key}</span>
+              <span class="pill ${badge.cls}" data-role="pacing">${badge.text}</span>
+              <div class="spacer"></div>
+              ${state.customAddedKeys.has(key) ? '<button class="btn btn-danger" type="button" data-role="remove" style="padding:3px 8px;font-size:0.75rem;">Remove</button>' : ''}
+            </div>
+            <div>
+              <label>Label</label>
+              <input type="text" data-field="label" value="${escapeAttr(entry.label || '')}" />
+            </div>
+            <div class="dates-row">
+              <div>
+                <label>Official Date</label>
+                <input type="date" data-field="official_date" value="${escapeAttr(entry.official_date || '')}" />
+              </div>
+              <div>
+                <label>Next Cycle Date</label>
+                <input type="date" data-field="next_cycle_date" value="${escapeAttr(entry.next_cycle_date || '')}" />
+              </div>
+            </div>
+            <div>
+              <label>Study Directive</label>
+              <input type="text" data-field="directive" value="${escapeAttr(entry.directive || '')}" />
+            </div>
+            <div class="row">
+              <label class="toggle-label">
+                <input type="checkbox" data-field="is_confirmed" ${entry.is_confirmed ? 'checked' : ''} />
+                Confirmed Official Date
+              </label>
+            </div>
+          `;
+
+          card.querySelectorAll('input').forEach((inp) => {
+            const field = inp.dataset.field;
+            const eventName = inp.type === 'checkbox' ? 'change' : 'input';
+            inp.addEventListener(eventName, () => {
+              if (field === 'is_confirmed') {
+                entry.is_confirmed = inp.checked;
+              } else if (field === 'next_cycle_date') {
+                if (inp.value) entry.next_cycle_date = inp.value;
+                else delete entry.next_cycle_date;
+              } else {
+                entry[field] = inp.value;
+              }
+              const updatedBadge = computePacingBadge(entry.official_date, entry.next_cycle_date);
+              const badgeEl = card.querySelector('[data-role="pacing"]');
+              badgeEl.textContent = updatedBadge.text;
+              badgeEl.className = `pill ${updatedBadge.cls}`;
+              renderMeta();
+            });
+          });
+
+          const removeBtn = card.querySelector('[data-role="remove"]');
+          if (removeBtn) {
+            removeBtn.addEventListener('click', () => {
+              delete state.schedule.exams[key];
+              state.customAddedKeys.delete(key);
+              renderMeta();
+              renderCards();
+            });
+          }
+
+          grid.appendChild(card);
+        }
+      }
+
+      function escapeAttr(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      async function loadReadOnlyFallback() {
+        try {
+          const res = await fetch(`./exam_schedule.json?t=${Date.now()}`, { cache: 'no-store' });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          state.schedule = await res.json();
+          state.authenticated = false;
+          state.sha = null;
+          renderMeta();
+          renderCards();
+        } catch (err) {
+          showBanner('info', `<span>Preview mode: load or connect with your GitHub PAT to edit &amp; publish. (${escapeAttr(err.message)})</span>`);
+        }
+      }
+
+      async function connectAndLoad() {
+        hideBanner();
+        const owner = el('ghOwner').value.trim();
+        const repo = el('ghRepo').value.trim();
+        const branch = el('ghBranch').value.trim();
+        const path = el('ghPath').value.trim();
+        const token = el('ghToken').value.trim();
+
+        if (!token) {
+          showBanner('error', '<span>Please enter a GitHub Fine-Grained PAT first.</span>');
+          return;
+        }
+        if (el('rememberToken').checked) {
+          localStorage.setItem(STORAGE_TOKEN_KEY, token);
+          sessionStorage.removeItem(STORAGE_TOKEN_KEY);
+        } else {
+          sessionStorage.setItem(STORAGE_TOKEN_KEY, token);
+          localStorage.removeItem(STORAGE_TOKEN_KEY);
+        }
+
+        const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}?ref=${encodeURIComponent(branch)}&t=${Date.now()}`;
+        try {
+          const res = await fetch(url, {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Accept': 'application/vnd.github+json',
+            },
+            cache: 'no-store',
+          });
+          if (res.status === 401 || res.status === 403) {
+            throw new Error(`Auth failed (${res.status}): check PAT permissions (Contents: Read & Write).`);
+          }
+          if (!res.ok) {
+            throw new Error(`GitHub API error (${res.status}).`);
+          }
+          const payload = await res.json();
+          state.sha = payload.sha;
+          state.schedule = JSON.parse(base64ToUtf8(payload.content));
+          state.authenticated = true;
+          renderMeta();
+          renderCards();
+          showBanner('success', `<span>Connected to <strong>${escapeAttr(owner)}/${escapeAttr(repo)}</strong> (SHA: <code>${escapeAttr(state.sha.slice(0, 7))}</code>).</span>`);
+        } catch (err) {
+          state.authenticated = false;
+          renderMeta();
+          showBanner('error', `<span>${escapeAttr(err.message)}</span>`);
+        }
+      }
+
+      function validateSchedule(sched) {
+        if (sched.schema_version !== 1) return 'schema_version must be 1';
+        const dateRe = /^\d{4}-\d{2}-\d{2}$/;
+        for (const [k, entry] of Object.entries(sched.exams || {})) {
+          if (!dateRe.test(entry.official_date || '')) return `${k}: official_date must be YYYY-MM-DD`;
+          if (entry.next_cycle_date && !dateRe.test(entry.next_cycle_date)) return `${k}: next_cycle_date must be YYYY-MM-DD`;
+          if (!entry.label || !String(entry.label).trim()) return `${k}: label cannot be empty`;
+        }
+        return null;
+      }
+
+      async function publishUpdate() {
+        hideBanner();
+        const errMsg = validateSchedule(state.schedule);
+        if (errMsg) {
+          showBanner('error', `<span>Validation failed: ${escapeAttr(errMsg)}</span>`);
+          return;
+        }
+
+        const owner = el('ghOwner').value.trim();
+        const repo = el('ghRepo').value.trim();
+        const branch = el('ghBranch').value.trim();
+        const path = el('ghPath').value.trim();
+        const token = el('ghToken').value.trim();
+
+        const nextRev = nextMonotonicRevision(state.schedule.revision);
+        const draft = {
+          ...state.schedule,
+          schema_version: 1,
+          revision: nextRev,
+          updated_at: new Date().toISOString(),
+        };
+        const formatted = JSON.stringify(draft, null, 2) + '\n';
+        const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
+
+        el('publishBtn').disabled = true;
+        try {
+          const res = await fetch(url, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Accept': 'application/vnd.github+json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: `chore(ota): update exam_schedule.json (rev ${nextRev})`,
+              content: utf8ToBase64(formatted),
+              sha: state.sha,
+              branch,
+            }),
+          });
+
+          if (res.status === 409) {
+            showBanner('error', `<span>409 Conflict: remote file changed.</span><button class="btn btn-primary" type="button" id="refreshShaBtn">Refresh Latest SHA</button>`);
+            el('refreshShaBtn').addEventListener('click', connectAndLoad);
+            return;
+          }
+          if (res.status === 401 || res.status === 403) {
+            throw new Error(`Publish rejected (${res.status}): ensure PAT has Contents: Read & Write.`);
+          }
+          if (!res.ok) {
+            throw new Error(`Publish failed (${res.status}).`);
+          }
+
+          const result = await res.json();
+          state.sha = result.content.sha;
+          state.schedule = draft;
+          renderMeta();
+          const commitUrl = result.commit && result.commit.html_url ? result.commit.html_url : '#';
+          showBanner('success', `
+            <span>Published <strong>rev ${nextRev}</strong>! <a href="${escapeAttr(commitUrl)}" target="_blank" rel="noopener">View Commit</a></span>
+            <button class="btn btn-primary" type="button" id="verifyCdnBtn">Verify Live CDN</button>
+          `);
+          el('verifyCdnBtn').addEventListener('click', () => verifyLiveCdn(nextRev));
+        } catch (err) {
+          showBanner('error', `<span>${escapeAttr(err.message)}</span>`);
+        } finally {
+          el('publishBtn').disabled = !state.authenticated;
+        }
+      }
+
+      async function verifyLiveCdn(expectedRev) {
+        showBanner('info', `<span>Polling live CDN for rev ${expectedRev}...</span>`);
+        for (let i = 0; i < 12; i++) {
+          try {
+            const res = await fetch(`${LIVE_CDN_URL}?t=${Date.now()}`, { cache: 'no-store' });
+            if (res.ok) {
+              const live = await res.json();
+              if (Number(live.revision) >= expectedRev) {
+                showBanner('success', `<span>Live CDN verified at <strong>rev ${live.revision}</strong>!</span>`);
+                return;
+              }
+            }
+          } catch (_) {}
+          await new Promise((r) => setTimeout(r, 4000));
+        }
+        showBanner('info', `<span>CDN still propagating (GitHub Pages usually updates within 30–60s).</span>`);
+      }
+
+      // Event bindings
+      el('connectBtn').addEventListener('click', connectAndLoad);
+      el('wipeTokenBtn').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_TOKEN_KEY);
+        sessionStorage.removeItem(STORAGE_TOKEN_KEY);
+        el('ghToken').value = '';
+        state.authenticated = false;
+        state.sha = null;
+        renderMeta();
+        showBanner('info', '<span>Token wiped from browser memory and storage. Switched to Read-Only mode.</span>');
+      });
+      el('publishBtn').addEventListener('click', publishUpdate);
+      el('searchBox').addEventListener('input', (e) => {
+        state.search = e.target.value;
+        renderCards();
+      });
+      el('toggleAddBtn').addEventListener('click', () => {
+        el('addPanel').classList.toggle('show');
+      });
+      el('addConfirmBtn').addEventListener('click', () => {
+        const key = el('newKey').value.trim().toUpperCase();
+        const label = el('newLabel').value.trim();
+        const officialDate = el('newOfficialDate').value.trim();
+        const nextDate = el('newNextDate').value.trim();
+        const directive = el('newDirective').value.trim();
+        if (!/^[A-Z0-9_]+$/.test(key)) {
+          showBanner('error', '<span>Exam key must be uppercase letters, numbers, or underscores (e.g. XAT).</span>');
+          return;
+        }
+        if (!label || !/^\d{4}-\d{2}-\d{2}$/.test(officialDate)) {
+          showBanner('error', '<span>Please provide a non-empty label and valid official date.</span>');
+          return;
+        }
+        const entry = {
+          official_date: officialDate,
+          label,
+          is_confirmed: el('newConfirmed').checked,
+          directive,
+        };
+        if (nextDate) entry.next_cycle_date = nextDate;
+        state.schedule.exams[key] = entry;
+        state.customAddedKeys.add(key);
+        el('newKey').value = '';
+        el('newLabel').value = '';
+        el('newOfficialDate').value = '';
+        el('newNextDate').value = '';
+        el('newDirective').value = '';
+        el('newConfirmed').checked = false;
+        el('addPanel').classList.remove('show');
+        hideBanner();
+        renderMeta();
+        renderCards();
+      });
+      el('toggleJsonBtn').addEventListener('click', () => {
+        const d = el('jsonDrawer');
+        d.style.display = d.style.display === 'none' ? 'block' : 'none';
+        renderMeta();
+      });
+      el('downloadBtn').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(state.schedule, null, 2) + '\n'], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'exam_schedule.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+
+      // Boot: restore token if saved, else load read-only fallback
+      const storedLocal = localStorage.getItem(STORAGE_TOKEN_KEY);
+      const storedSession = sessionStorage.getItem(STORAGE_TOKEN_KEY);
+      if (storedLocal) {
+        el('ghToken').value = storedLocal;
+        el('rememberToken').checked = true;
+        connectAndLoad();
+      } else if (storedSession) {
+        el('ghToken').value = storedSession;
+        connectAndLoad();
+      } else {
+        loadReadOnlyFallback();
+      }
+    })();
+  </script>
+</body>
+</html>

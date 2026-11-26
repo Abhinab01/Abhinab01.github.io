@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "revision": 1,
+  "updated_at": "2026-11-01T00:00:00Z",
+  "exams": {
+    "CAT": {
+      "official_date": "2026-11-29",
+      "next_cycle_date": "2027-11-28",
+      "label": "CAT 2026 (Expected)",
+      "is_confirmed": true,
+      "directive": "Prioritize Arithmetic & Algebra accuracy; drill L3 & past-paper sets."
+    },
+    "SBI_PO": {
+      "official_date": "2027-01-17",
+      "next_cycle_date": "2028-01-16",
+      "label": "SBI PO Prelims 2027",
+      "is_confirmed": false,
+      "directive": "Build 60s/Q speed on DI, Percentages, Ratios & Quadratic approximations."
+    },
+    "IBPS_PO": {
+      "official_date": "2027-02-14",
+      "next_cycle_date": "2028-02-13",
+      "label": "IBPS PO Prelims 2027",
+      "is_confirmed": false,
+      "directive": "Focus on speed arithmetic, series & data-driven word problems."
+    },
+    "SBI_CLERK": {
+      "official_date": "2027-02-28",
+      "next_cycle_date": "2028-02-27",
+      "label": "SBI Clerk Prelims 2027",
+      "is_confirmed": false,
+      "directive": "High-volume clerical speed: aim for 95%+ accuracy under 40s/Q."
+    },
+    "IBPS_CLERK": {
+      "official_date": "2027-03-14",
+      "next_cycle_date": "2028-03-12",
+      "label": "IBPS Clerk Prelims 2027",
+      "is_confirmed": false,
+      "directive": "Drill rapid simplification, percentages & profit-loss mental math."
+    },
+    "IBPS_RRB": {
+      "official_date": "2027-08-08",
+      "next_cycle_date": "2028-08-06",
+      "label": "IBPS RRB Officer 2027",
+      "is_confirmed": false,
+      "directive": "Master foundational Arithmetic speed and clean calculation habits."
+    },
+    "RBI_GRADE_B": {
+      "official_date": "2027-05-16",
+      "next_cycle_date": "2028-05-14",
+      "label": "RBI Grade B Phase 1 2027",
+      "is_confirmed": false,
+      "directive": "Balance tough multi-step Quant DI with Probability & Permutations."
+    },
+    "REGULATORY_A_B": {
+      "official_date": "2027-06-20",
+      "next_cycle_date": "2028-06-18",
+      "label": "SEBI / NABARD Gr. A/B 2027",
+      "is_confirmed": false,
+      "directive": "Target conceptual Arithmetic, Algebra & analytical reasoning."
+    },
+    "RBI_ASSISTANT": {
+      "official_date": "2027-04-11",
+      "next_cycle_date": "2028-04-09",
+      "label": "RBI Assistant Prelims 2027",
+      "is_confirmed": false,
+      "directive": "Maximize speed-accuracy on core percentages, ratios & averages."
+    },
+    "SSC": {
+      "official_date": "2027-06-13",
+      "next_cycle_date": "2028-06-11",
+      "label": "SSC CGL Tier 1 2027",
+      "is_confirmed": false,
+      "directive": "Give equal weight to Geometry, Trigonometry, Algebra & Arithmetic."
+    },
+    "SSC_CHSL": {
+      "official_date": "2027-07-04",
+      "next_cycle_date": "2028-07-02",
+      "label": "SSC CHSL Tier 1 2027",
+      "is_confirmed": false,
+      "directive": "Drill standard Geometry theorems, Mensuration & speed Arithmetic."
+    },
+    "Railways": {
+      "official_date": "2027-05-23",
+      "next_cycle_date": "2028-05-21",
+      "label": "RRB NTPC / ALP 2027",
+      "is_confirmed": false,
+      "directive": "Lock down TSD, Time & Work, Mensuration & basic Algebra."
+    },
+    "CSAT": {
+      "official_date": "2027-05-30",
+      "next_cycle_date": "2028-05-28",
+      "label": "UPSC Prelims CSAT 2027",
+      "is_confirmed": false,
+      "directive": "Focus on Number System logic, Permutations & qualifying accuracy."
+    },
+    "NDA": {
+      "official_date": "2027-04-18",
+      "next_cycle_date": "2028-04-16",
+      "label": "NDA I Mathematics 2027",
+      "is_confirmed": false,
+      "directive": "Strengthen Algebra, Progressions, Coordinate Geometry & Probability."
+    },
+    "GMAT": {
+      "official_date": "2027-03-21",
+      "next_cycle_date": "2028-03-19",
+      "label": "GMAT Focus Quant Target",
+      "is_confirmed": false,
+      "directive": "Master Word Problems, Inequalities, Ratios & Number Properties."
+    },
+    "GRE": {
+      "official_date": "2027-03-28",
+      "next_cycle_date": "2028-03-26",
+      "label": "GRE General Quant Target",
+      "is_confirmed": false,
+      "directive": "Eliminate silly errors in Geometry, Algebra & Quantitative Comparison."
+    },
+    "Banking": {
+      "official_date": "2027-01-17",
+      "next_cycle_date": "2028-01-16",
+      "label": "Banking Quant Cycle 2027",
+      "is_confirmed": false,
+      "directive": "Build 60s/Q speed on Arithmetic, Ratios & Quadratic equations."
+    }
+  }
+}
