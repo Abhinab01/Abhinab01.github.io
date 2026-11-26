@@ -1,18 +1,23 @@
 {
-  "last_run_utc": "2026-11-26T06:32:59.696Z",
+  "last_run_utc": "2026-11-26T06:43:37.354Z",
   "revision": 1,
   "auto_updated": [],
   "pending_review": [],
   "errors": [
     {
+      "examKey": "SBI_PO",
+      "url": "https://sbi.co.in/web/careers/current-openings",
+      "error": "fetch failed"
+    },
+    {
+      "examKey": "SBI_CLERK",
+      "url": "https://sbi.co.in/web/careers/current-openings",
+      "error": "fetch failed"
+    },
+    {
       "examKey": "IBPS_CLERK",
       "url": "https://www.ibps.in/index.php/crp-clerical-cadre/",
       "error": "HTTP 404"
-    },
-    {
-      "examKey": "IBPS_RRB",
-      "url": "https://www.ibps.in/index.php/crp-rrb/",
-      "error": "fetch failed"
     },
     {
       "examKey": "REGULATORY_A_B",
@@ -20,9 +25,14 @@
       "error": "HTTP 404"
     },
     {
+      "examKey": "REGULATORY_A_B",
+      "url": "https://www.nabard.org/careers-notices1.aspx",
+      "error": "This operation was aborted"
+    },
+    {
       "examKey": "Railways",
       "url": "https://www.rrbcdg.gov.in/",
-      "error": "fetch failed"
+      "error": "This operation was aborted"
     },
     {
       "examKey": "CSAT",
