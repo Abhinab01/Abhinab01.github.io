@@ -1,0 +1,186 @@
+{
+  "CAT": {
+    "official_urls": [
+      {
+        "url": "https://iimcat.ac.in/",
+        "type": "html",
+        "include_patterns": ["CAT", "Common Admission Test", "examination", "test date"],
+        "exclude_patterns": ["admit card", "scorecard", "result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=CAT+exam+date+site:iimcat.ac.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "SBI_PO": {
+    "official_urls": [
+      {
+        "url": "https://sbi.co.in/web/careers/current-openings",
+        "type": "html",
+        "include_patterns": ["Probationary Officers", "SBI PO", "Preliminary"],
+        "exclude_patterns": ["Mains", "Interview", "Result", "Call Letter"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SBI+PO%22+prelims+exam+date+site:sbi.co.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "IBPS_PO": {
+    "official_urls": [
+      {
+        "url": "https://www.ibps.in/index.php/crp-po-mt/",
+        "type": "html",
+        "include_patterns": ["CRP-PO", "PO/MT", "Preliminary", "Tentative Calendar"],
+        "exclude_patterns": ["Mains", "Interview", "Provisional Allotment"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22IBPS+PO%22+prelims+exam+date+site:ibps.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "SBI_CLERK": {
+    "official_urls": [
+      {
+        "url": "https://sbi.co.in/web/careers/current-openings",
+        "type": "html",
+        "include_patterns": ["Junior Associates", "SBI Clerk", "Preliminary"],
+        "exclude_patterns": ["Mains", "Result", "Call Letter"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SBI+Clerk%22+OR+%22Junior+Associates%22+prelims+exam+date+site:sbi.co.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "IBPS_CLERK": {
+    "official_urls": [
+      {
+        "url": "https://www.ibps.in/index.php/crp-clerical-cadre/",
+        "type": "html",
+        "include_patterns": ["CRP-CSA", "CRP-Clerk", "Clerical", "Preliminary"],
+        "exclude_patterns": ["Mains", "Provisional Allotment", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22IBPS+Clerk%22+prelims+exam+date+site:ibps.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "IBPS_RRB": {
+    "official_urls": [
+      {
+        "url": "https://www.ibps.in/index.php/crp-rrb/",
+        "type": "html",
+        "include_patterns": ["CRP-RRB", "Regional Rural Banks", "Officer Scale", "Preliminary"],
+        "exclude_patterns": ["Mains", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22IBPS+RRB%22+prelims+exam+date+site:ibps.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "RBI_GRADE_B": {
+    "official_urls": [
+      {
+        "url": "https://opportunities.rbi.org.in/Scripts/vacancies.aspx",
+        "type": "html",
+        "include_patterns": ["Grade 'B'", "Grade B", "Phase-I", "Phase I"],
+        "exclude_patterns": ["Phase-II", "Interview", "Final Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22RBI+Grade+B%22+Phase+I+exam+date+site:rbi.org.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "RBI_ASSISTANT": {
+    "official_urls": [
+      {
+        "url": "https://opportunities.rbi.org.in/Scripts/vacancies.aspx",
+        "type": "html",
+        "include_patterns": ["Assistant", "Preliminary"],
+        "exclude_patterns": ["Mains", "Language Proficiency", "Final Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22RBI+Assistant%22+prelims+exam+date+site:rbi.org.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "REGULATORY_A_B": {
+    "official_urls": [
+      {
+        "url": "https://www.sebi.gov.in/sebiweb/other/career.jsp",
+        "type": "html",
+        "include_patterns": ["Grade A", "Phase I", "SEBI", "NABARD"],
+        "exclude_patterns": ["Phase II", "Interview", "Result"]
+      },
+      {
+        "url": "https://www.nabard.org/careers-notices1.aspx",
+        "type": "html",
+        "include_patterns": ["Grade A", "Grade B", "Preliminary", "Phase I"],
+        "exclude_patterns": ["Mains", "Phase II", "Interview"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=(%22SEBI+Grade+A%22+OR+%22NABARD+Grade+A%22)+Phase+I+exam+date+site:sebi.gov.in+OR+site:nabard.org+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "SSC": {
+    "official_urls": [
+      {
+        "url": "https://ssc.gov.in/",
+        "type": "html",
+        "include_patterns": ["CGL", "Combined Graduate Level", "Tier-I", "Tier I"],
+        "exclude_patterns": ["Tier-II", "Tier II", "Result", "Answer Key"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SSC+CGL%22+Tier+1+exam+date+site:ssc.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "SSC_CHSL": {
+    "official_urls": [
+      {
+        "url": "https://ssc.gov.in/",
+        "type": "html",
+        "include_patterns": ["CHSL", "Combined Higher Secondary", "Tier-I", "Tier I"],
+        "exclude_patterns": ["Tier-II", "Tier II", "Result", "Skill Test"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SSC+CHSL%22+Tier+1+exam+date+site:ssc.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "Railways": {
+    "official_urls": [
+      {
+        "url": "https://www.rrbcdg.gov.in/",
+        "type": "html",
+        "include_patterns": ["NTPC", "ALP", "CBT-1", "CBT 1", "CEN"],
+        "exclude_patterns": ["CBT-2", "Document Verification", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=(%22RRB+NTPC%22+OR+%22RRB+ALP%22)+CBT+exam+date+site:rrbcdg.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "CSAT": {
+    "official_urls": [
+      {
+        "url": "https://upsc.gov.in/examinations/exam-calendar",
+        "type": "html",
+        "include_patterns": ["Civil Services (Preliminary)", "CSAT", "Preliminary Examination"],
+        "exclude_patterns": ["Main", "Interview", "Result"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22UPSC+Civil+Services+Preliminary%22+exam+date+site:upsc.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "NDA": {
+    "official_urls": [
+      {
+        "url": "https://upsc.gov.in/examinations/exam-calendar",
+        "type": "html",
+        "include_patterns": ["N.D.A.", "NDA & NA", "National Defence Academy"],
+        "exclude_patterns": ["SSB", "Result", "Final"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22NDA%22+UPSC+exam+date+site:upsc.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "GMAT": {
+    "official_urls": [],
+    "rss_fallback_query": "",
+    "rolling": true
+  },
+  "GRE": {
+    "official_urls": [],
+    "rss_fallback_query": "",
+    "rolling": true
+  }
+}

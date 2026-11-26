@@ -257,6 +257,15 @@
       </div>
     </section>
 
+    <!-- Auto-Sync Bot Status & Pending Review Panel -->
+    <section id="syncStatusPanel" class="panel" style="display: none;">
+      <div class="row">
+        <span class="pill pill-accent">Auto-Sync Bot</span>
+        <span id="syncSummaryText" class="subtitle">Last checked: —</span>
+      </div>
+      <div id="pendingReviewList" style="margin-top: 10px; display: none;"></div>
+    </section>
+
     <!-- Exam Cards -->
     <section id="cardsGrid" class="cards"></section>
   </div>
@@ -698,7 +707,66 @@
         URL.revokeObjectURL(a.href);
       });
 
+      async function loadSyncLog() {
+        try {
+          const res = await fetch(`./sync_log.json?t=${Date.now()}`, { cache: 'no-store' });
+          if (!res.ok) return;
+          const log = await res.json();
+          const panel = el('syncStatusPanel');
+          const summary = el('syncSummaryText');
+          const list = el('pendingReviewList');
+
+          const autoCount = Array.isArray(log.auto_updated) ? log.auto_updated.length : 0;
+          const pending = Array.isArray(log.pending_review) ? log.pending_review : [];
+          const lastChecked = log.last_run_utc
+            ? String(log.last_run_utc).replace('T', ' ').replace(/\.\d+Z$/, ' UTC')
+            : '—';
+
+          summary.textContent = `Last checked: ${lastChecked} • ${autoCount} auto-updated • ${pending.length} pending review`;
+          panel.style.display = 'block';
+
+          if (pending.length > 0) {
+            list.innerHTML = '';
+            list.style.display = 'grid';
+            list.style.gap = '8px';
+            for (const item of pending) {
+              const row = document.createElement('div');
+              row.className = 'row';
+              row.style.padding = '10px 12px';
+              row.style.borderRadius = '10px';
+              row.style.border = '1px solid var(--warn)';
+              row.style.background = 'rgba(245, 158, 11, 0.08)';
+              row.innerHTML = `
+                <div style="flex: 1; min-width: 220px;">
+                  <div class="row" style="margin-bottom: 4px;">
+                    <span class="exam-key">${escapeAttr(item.examKey)}</span>
+                    <span class="pill pill-warn">Detected: ${escapeAttr(item.detectedDate)}</span>
+                    <span class="pill">${escapeAttr(item.confidence || 'medium')}</span>
+                  </div>
+                  <div class="subtitle" style="margin-bottom: 4px;">${escapeAttr(item.snippet || '')}</div>
+                  <a href="${escapeAttr(item.sourceUrl || '#')}" target="_blank" rel="noopener" style="font-size: 0.78rem;">View Source</a>
+                </div>
+                <button class="btn btn-primary" type="button">Apply Detected Date</button>
+              `;
+              row.querySelector('button').addEventListener('click', () => {
+                const target = state.schedule.exams?.[item.examKey];
+                if (!target) return;
+                target.official_date = item.detectedDate;
+                target.is_confirmed = true;
+                renderMeta();
+                renderCards();
+                showBanner('info', `<span>Applied <strong>${escapeAttr(item.detectedDate)}</strong> to <strong>${escapeAttr(item.examKey)}</strong>. Click <strong>Publish OTA Update</strong> to commit live.</span>`);
+              });
+              list.appendChild(row);
+            }
+          } else {
+            list.style.display = 'none';
+          }
+        } catch (_) {}
+      }
+
       // Boot: restore token if saved, else load read-only fallback
+      loadSyncLog();
       const storedLocal = localStorage.getItem(STORAGE_TOKEN_KEY);
       const storedSession = sessionStorage.getItem(STORAGE_TOKEN_KEY);
       if (storedLocal) {

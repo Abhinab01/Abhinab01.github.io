@@ -1,0 +1,15 @@
+{
+  "name": "mockbird-ota-sync",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Zero-cost automated exam schedule sync for MOCKBIRD OTA",
+  "scripts": {
+    "sync": "node scripts/sync_exam_dates.mjs",
+    "sync:dry": "node scripts/sync_exam_dates.mjs --dry-run",
+    "test": "node --test scripts/sync_exam_dates.test.mjs"
+  },
+  "dependencies": {
+    "unpdf": "^0.12.1"
+  }
+}
