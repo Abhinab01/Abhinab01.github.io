@@ -244,15 +244,5 @@
     ],
     "rss_fallback_query": "https://news.google.com/rss/search?q=%22NDA%22+UPSC+exam+date+site:upsc.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
     "rolling": false
-  },
-  "GMAT": {
-    "official_urls": [],
-    "rss_fallback_query": "",
-    "rolling": true
-  },
-  "GRE": {
-    "official_urls": [],
-    "rss_fallback_query": "",
-    "rolling": true
   }
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "revision": 2,
-  "updated_at": "2026-11-26T00:00:00Z",
+  "revision": 3,
+  "updated_at": "2026-11-26T15:30:00Z",
   "exams": {
     "CAT": {
       "official_date": "2026-11-29",
@@ -142,20 +142,6 @@
       "label": "NDA I Mathematics 2027",
       "is_confirmed": false,
       "directive": "Strengthen Algebra, Progressions, Coordinate Geometry & Probability."
-    },
-    "GMAT": {
-      "official_date": "2027-03-21",
-      "next_cycle_date": "2028-03-19",
-      "label": "GMAT Focus Quant Target",
-      "is_confirmed": false,
-      "directive": "Master Word Problems, Inequalities, Ratios & Number Properties."
-    },
-    "GRE": {
-      "official_date": "2027-03-28",
-      "next_cycle_date": "2028-03-26",
-      "label": "GRE General Quant Target",
-      "is_confirmed": false,
-      "directive": "Eliminate silly errors in Geometry, Algebra & Quantitative Comparison."
     },
     "Banking": {
       "official_date": "2027-01-17",

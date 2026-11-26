@@ -62,13 +62,13 @@ test('Parses multi-day ranges and takes first exam day', () => {
   assert.equal(dates[0].date, '2027-03-14');
 });
 
-test('Monotonic revision bump advances cleanly and rolling exams (GMAT/GRE) are flagged rolling: true', () => {
+test('Monotonic revision bump advances cleanly and retired exams (GMAT/GRE) are excluded from exam_sources', () => {
   const rev1 = nextMonotonicRevision(1, NOW);
   assert.equal(rev1, 2026112601);
   const rev2 = nextMonotonicRevision(2026112601, NOW);
   assert.equal(rev2, 2026112602);
 
   const sources = JSON.parse(fs.readFileSync(path.join(__dirname, 'exam_sources.json'), 'utf8'));
-  assert.equal(sources.GMAT.rolling, true);
-  assert.equal(sources.GRE.rolling, true);
+  assert.equal(sources.GMAT, undefined);
+  assert.equal(sources.GRE, undefined);
 });
