@@ -11,7 +11,7 @@
     "rss_fallback_query": "https://news.google.com/rss/search?q=CAT+exam+date+site:iimcat.ac.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
     "rolling": false
   },
-  "SBI_PO": {
+  "SBI_PO_PRELIMS": {
     "official_urls": [
       {
         "url": "https://sbi.co.in/web/careers/current-openings",
@@ -21,6 +21,18 @@
       }
     ],
     "rss_fallback_query": "https://news.google.com/rss/search?q=%22SBI+PO%22+prelims+exam+date+site:sbi.co.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
+    "rolling": false
+  },
+  "SBI_PO_MAINS": {
+    "official_urls": [
+      {
+        "url": "https://sbi.co.in/web/careers/current-openings",
+        "type": "html",
+        "include_patterns": ["Probationary Officers", "SBI PO", "Mains"],
+        "exclude_patterns": ["Preliminary", "Interview", "Result", "Call Letter"]
+      }
+    ],
+    "rss_fallback_query": "https://news.google.com/rss/search?q=%22SBI+PO%22+mains+exam+date+site:sbi.co.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
     "rolling": false
   },
   "IBPS_PO": {
@@ -143,7 +155,7 @@
     "rss_fallback_query": "https://news.google.com/rss/search?q=%22IFSCA+Grade+A%22+Phase+I+exam+date+site:ifsca.gov.in+OR+site:pib.gov.in&hl=en-IN&gl=IN&ceid=IN:en",
     "rolling": false
   },
-  "IRDAI_AM": {
+  "IRDAI_GRADE_A": {
     "official_urls": [
       {
         "url": "https://irdai.gov.in/careers",
