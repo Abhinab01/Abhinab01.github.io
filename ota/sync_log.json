@@ -1,11 +1,16 @@
 {
-  "last_run_utc": "2026-11-27T11:46:44.907Z",
+  "last_run_utc": "2026-11-28T11:22:19.659Z",
   "revision": 4,
   "auto_updated": [],
   "pending_review": [],
   "errors": [
     {
       "examKey": "SBI_PO_PRELIMS",
+      "url": "https://sbi.co.in/web/careers/current-openings",
+      "error": "fetch failed"
+    },
+    {
+      "examKey": "SBI_PO_MAINS",
       "url": "https://sbi.co.in/web/careers/current-openings",
       "error": "fetch failed"
     },
